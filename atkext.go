@@ -1,4 +1,4 @@
-package ebgo
+package main
 
 import (
   "github.com/visualfc/atk/tk"

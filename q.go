@@ -1,4 +1,4 @@
-package main
+package ebgo
 import (
     "errors"
     //"time"

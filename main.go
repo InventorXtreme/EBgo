@@ -1,4 +1,4 @@
-package main
+package ebgo
 
 import (
 	"io/ioutil"

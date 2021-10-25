@@ -93,9 +93,9 @@ func NewWindow(queue *Queue) *Window {
 
   //Refresh Button
   refr := tk.NewButton(root,"refresh")
-  root.BindEvent("<<test>>",func(_ *tk.Event){
-    help.SetText(bigtset)
-    fmt.Println("fff")
+  root.BindEvent("<Destroy>", func(*tk.Event){
+      fmt.Println("sending end to queue")
+      queue.Insert("end")
   })
 
   refr.OnCommand(func(){
@@ -107,7 +107,7 @@ func NewWindow(queue *Queue) *Window {
   //tk.Pack(refr)
   tk.NewVPackLayout(root).AddWidgets(help,tk.NewLayoutSpacer(root,0,true),refr)
 
-  tk.SendEvent(root,"<<test>>")
+  //tk.SendEvent(root,"<<test>>")
 
   return root
 }
@@ -124,15 +124,16 @@ func main() {
   tk.Init()
   root := gui(queue)
   h := ""
-  for {
+  poggers := "tset"
+  for poggers=="tset" {
   tk.Update()
-  //time.Sleep(100000*time.Nanosecond)
+  time.Sleep(10000*time.Nanosecond)
   h, _ = queue.Remove()
   switch h {
   case "g":
     tk.SendEvent(root,"<<test>>")
-  case "h":
-    fmt.Println("d")
+  case "end":
+      poggers = "s"
   }
 
 }
